@@ -5,6 +5,7 @@ import Home from "@/views/Home";
 import AdminList from "@/views/admin/List";
 import AdminCreate from "@/views/admin/Create";
 import TenantList from "@/views/tenant/List";
+import TenantDetail from "@/views/tenant/Detail";
 import TenantCreate from "@/views/tenant/Create";
 import ContactList from "@/views/contact/List";
 import ContactCreate from "@/views/contact/Create";
@@ -41,6 +42,11 @@ const routes = [
     path: "/tenant/create",
     name: "TenantCreate",
     component: TenantCreate
+  },
+  {
+    path: "/tenant/:id",
+    name: "TenantDetail",
+    component: TenantDetail
   },
   {
     path: "/contact/list",

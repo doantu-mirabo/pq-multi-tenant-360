@@ -1,7 +1,16 @@
 <template>
   <AuthLayout>
     <div class="title">List tenant</div>
-    <a-table :columns="columns" :data-source="data" size="small" />
+    <a-table :columns="columns" :data-source="data" size="small">
+      <template slot="actions" slot-scope="_, record">
+        <router-link :to="`/tenant/${record.id}`">Detail</router-link>
+        <a-popconfirm title="Sure to delete?">
+          <a href="javascript:;" style="color: #E53E3E; margin-left: 0.5rem">
+            Delete
+          </a>
+        </a-popconfirm>
+      </template>
+    </a-table>
   </AuthLayout>
 </template>
 
@@ -10,54 +19,55 @@ import AuthLayout from "@/layouts/AuthLayout";
 
 const columns = [
   {
-    title: "Account",
-    dataIndex: "account"
+    title: "ID",
+    dataIndex: "id"
   },
   {
-    title: "Full name",
-    dataIndex: "fullname"
+    title: "Tenant name",
+    dataIndex: "name"
   },
   {
-    title: "Email",
-    dataIndex: "email"
+    title: "Max rooms",
+    dataIndex: "maxRooms"
   },
   {
-    title: "Role",
-    dataIndex: "role"
+    title: "Max users",
+    dataIndex: "maxUsers"
   },
   {
-    title: "Status",
-    dataIndex: "status"
+    title: "License",
+    dataIndex: "license"
   },
   {
-    title: "Action",
-    dataIndex: ""
+    title: "Actions",
+    dataIndex: "actions",
+    scopedSlots: { customRender: "actions" }
   }
 ];
 const data = [
   {
     key: "1",
-    account: "doantu",
-    fullname: "John Brown",
-    role: "admin",
-    email: "admin1@gmail.com",
-    status: "Active"
+    id: "1",
+    name: "tenant1",
+    maxRooms: "2",
+    maxUsers: "10",
+    license: "license 1"
   },
   {
     key: "2",
-    account: "doantu",
-    fullname: "John Brown",
-    role: "admin",
-    email: "admin1@gmail.com",
-    status: "Active"
+    id: "2",
+    name: "tenant2",
+    maxRooms: "2",
+    maxUsers: "10",
+    license: "license 2"
   },
   {
     key: "3",
-    account: "doantu",
-    fullname: "John Brown",
-    role: "admin",
-    email: "admin1@gmail.com",
-    status: "Active"
+    id: "3",
+    name: "tenant3",
+    maxRooms: "2",
+    maxUsers: "10",
+    license: "license 3"
   }
 ];
 export default {

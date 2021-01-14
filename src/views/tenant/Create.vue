@@ -8,12 +8,6 @@
           <a-input placeholder="Username" size="large" />
           <div class="label">Full name</div>
           <a-input placeholder="Full name" size="large" />
-          <div class="label">Email</div>
-          <a-input placeholder="Email" size="large" />
-          <div class="label">Password</div>
-          <a-input-password placeholder="Password" size="large" />
-          <div class="label">Re-password</div>
-          <a-input-password placeholder="Re-password" size="large" />
           <div class="label">Memo</div>
           <a-textarea allow-clear :rows="4" />
           <a-button size="large" class="btn-create">
