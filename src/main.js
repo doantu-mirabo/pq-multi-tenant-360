@@ -4,6 +4,9 @@ import "ant-design-vue/dist/antd.css";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import axios from "./utils/axios";
+
+Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false;
 

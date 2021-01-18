@@ -62,16 +62,13 @@
               <router-link to="/tenant/create">テナント作成</router-link>
             </a-menu-item>
           </a-sub-menu>
-          <a-sub-menu key="contact">
+          <a-sub-menu key="license">
             <span slot="title">
               <a-icon type="file-text" />
               契約プラン管理
             </span>
-            <a-menu-item key="contact-list">
-              <router-link to="/contact/list">契約プラン一覧</router-link>
-            </a-menu-item>
-            <a-menu-item key="contact-create">
-              <router-link to="/contact/create">契約プラン作成</router-link>
+            <a-menu-item key="license-list">
+              <router-link to="/license/list">契約プラン一覧</router-link>
             </a-menu-item>
           </a-sub-menu>
         </a-menu>
@@ -111,7 +108,6 @@ export default {
   created() {
     let listBreadcrumbRoute = this.$route.path.split("/");
     listBreadcrumbRoute = [...new Set(listBreadcrumbRoute)];
-    console.log({ listBreadcrumbRoute });
     listBreadcrumbRoute.forEach(b => {
       if (b) {
         this.listBreadcrumb.push(b);
@@ -137,6 +133,7 @@ export default {
 
 <style lang="scss" scoped>
 #components-layout-demo-top-side-2 {
+  min-height: 100vh;
   .logo {
     width: 122px;
     height: 31px;

@@ -4,11 +4,18 @@
     <a-row type="flex" justify="center">
       <a-col :xs="24" :md="20" :lg="10">
         <form>
-          <div class="label">Username</div>
-          <a-input placeholder="Username" size="large" />
           <div class="label">Full name</div>
-          <a-input placeholder="Full name" size="large" />
-          <div class="label">Memo</div>
+          <a-input placeholder="Username" size="large" />
+          <div class="label">License plan</div>
+          <a-select default-value="6" size="large" style="width: 100%;">
+            <a-select-option value="6">
+              6 months
+            </a-select-option>
+            <a-select-option value="12">
+              12 months
+            </a-select-option>
+          </a-select>
+          <div class="label">Description</div>
           <a-textarea allow-clear :rows="4" />
           <a-button size="large" class="btn-create">
             Create

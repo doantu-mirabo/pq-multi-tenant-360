@@ -2,13 +2,15 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import SignIn from "@/views/SignIn";
 import Home from "@/views/Home";
+import NotFound from "@/views/NotFound";
 import AdminList from "@/views/admin/List";
 import AdminCreate from "@/views/admin/Create";
 import TenantList from "@/views/tenant/List";
 import TenantDetail from "@/views/tenant/Detail";
 import TenantCreate from "@/views/tenant/Create";
-import ContactList from "@/views/contact/List";
-import ContactCreate from "@/views/contact/Create";
+import LicenseList from "@/views/license/List";
+
+import { getToken } from "@/utils/cookies";
 
 Vue.use(VueRouter);
 
@@ -49,14 +51,14 @@ const routes = [
     component: TenantDetail
   },
   {
-    path: "/contact/list",
-    name: "ContactList",
-    component: ContactList
+    path: "/license/list",
+    name: "LicenseList",
+    component: LicenseList
   },
   {
-    path: "/contact/create",
-    name: "ContactCreate",
-    component: ContactCreate
+    path: "*",
+    name: "NotFound",
+    component: NotFound
   }
 ];
 
@@ -67,8 +69,15 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // config middleware here
-  next();
+  const token = getToken();
+  if (to.name === "SignIn" && token) {
+    next({ name: "Home" });
+    return;
+  }
+  if (to.name !== "SignIn" && !token) {
+    next({ name: "SignIn" });
+    return;
+  } else next();
 });
 
 export default router;
